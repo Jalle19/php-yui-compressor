@@ -6,7 +6,7 @@ A modern PHP wrapper for the YUI compressor.
 Installation
 ------------
 
-Run `composer install` (install Composer if you haven't done so already).
+Run `composer install` (install Composer if you haven't done so already). You will also need to have Java installed and available in your path (on Debian/Ubuntu-based systems you can install it using `sudo apt-get install default-jre`)
 
 Usage
 -----
