@@ -18,7 +18,7 @@ The following snippet assumes you've included the Composer-generated autoloader.
 
 $yui = new \YUI\Compressor();
 
-// Read the uncompressed conents
+// Read the uncompressed contents
 $css = file_get_contents('styles.css');
 $script = file_get_contents('script.js');
 
