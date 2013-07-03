@@ -11,7 +11,7 @@
 
 namespace YUI;
 
-class YUICompressor
+class Compressor
 {
 
 	const TYPE_CSS = 'css';

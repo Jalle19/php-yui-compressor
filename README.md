@@ -16,18 +16,18 @@ The following snippet assumes you've included the Composer-generated autoloader.
 ```php
 <?php
 
-$yui = new \YUI\YUICompressor();
+$yui = new \YUI\Compressor();
 
 // Read the uncompressed conents
 $css = file_get_contents('styles.css');
 $script = file_get_contents('script.js');
 
 // Compress the CSS
-$yui->setType(\YUI\YUICompressor::TYPE_CSS);
+$yui->setType(\YUI\Compressor::TYPE_CSS);
 $optimizedCss = $yui->compress($css);
 
 // Compress the JavaScript
-$yui->setType(\YUI\YUICompressor::TYPE_JS);
+$yui->setType(\YUI\Compressor::TYPE_JS);
 $optimizedScript = $yui->compress($script);
 ```
 
