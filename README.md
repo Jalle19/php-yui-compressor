@@ -31,6 +31,28 @@ $yui->setType(\YUI\Compressor::TYPE_JS);
 $optimizedScript = $yui->compress($script);
 ```
 
+```php
+<?php
+
+$yui = new \YUI\Compressor(array(
+	'line-break'=>80,
+	'disable-optimizations'=>true,
+));
+
+// Read the uncompressed contents
+$css = file_get_contents('styles.css');
+$script = file_get_contents('script.js');
+
+// The "disable-optimizations" option is JavaScript-specific so it won't apply 
+// here...
+$yui->setType(\YUI\Compressor::TYPE_CSS);
+$optimizedCss = $yui->compress($css);
+
+// ...but here it will
+$yui->setType(\YUI\Compressor::TYPE_JS);
+$optimizedScript = $yui->compress($script);
+```
+
 Credits
 -------
 
