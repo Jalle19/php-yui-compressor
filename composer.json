@@ -1,0 +1,16 @@
+{
+	"name": "jalle19/php-yui-compressor",
+	"type": "library",
+	"description": "PHP wrapper for the YUI compressor",
+	"keywords": ["js", "css", "minify", "yui"],
+	"homepage": "https://github.com/Jalle19/PHP-YUI-Compressor",
+	"require": {
+		"php": ">=5.3.0",
+		"nervo/yuicompressor": "dev-master"
+	},
+	"autoload": {
+		"psr-0": {
+			"YUI": "lib/"
+		}
+	}
+}
