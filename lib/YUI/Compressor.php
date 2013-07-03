@@ -44,15 +44,23 @@ class Compressor
 	);
 
 	/**
-	 * Class constructor
-	 * @param array $options (optional) options for the YUI compressor
+	 * Class constructor. The specified options will be merged with the 
+	 * default ones.
+	 * @param array $options options for the YUI compressor. Default to an 
+	 * empty array, meaning the default options will be used.
+	 * @throws Exception if an invalid option is supplied
 	 */
 	public function __construct($options = array())
 	{
 		$this->_jarPath = realpath(__DIR__
 				.'/../../vendor/nervo/yuicompressor/yuicompressor.jar');
 
-		$this->setOptions($options);
+		// Check that all supplied options are valid
+		foreach (array_keys($options) as $option)
+			if (!array_key_exists($option, $this->_options))
+				throw new Exception('Invalid option: '.$option);
+
+		$this->_options = array_merge($this->_options, $options);
 	}
 
 	/**
@@ -126,23 +134,6 @@ class Compressor
 		}
 
 		throw new Exception('Failed to open a process');
-	}
-
-	/**
-	 * Merges the default options with the ones specified. This is done in a 
-	 * separate method because it's a bad idea to throw exceptions from the 
-	 * constructor.
-	 * @param array $options the options
-	 * @throws Exception if an option is invalid
-	 */
-	private function setOptions($options)
-	{
-		// Check that all supplied options are valid
-		foreach (array_keys($options) as $option)
-			if (!array_key_exists($option, $this->_options))
-				throw new Exception('Invalid option: '.$option);
-
-		$this->_options = array_merge($this->_options, $options);
 	}
 
 }
