@@ -53,8 +53,13 @@ class Compressor
 	 */
 	public function __construct($options = array())
 	{
+		// The path to the JAR file will vary depending on whether this package 
+		// is installed along with other Composer packages or not
 		$this->_jarPath = realpath(__DIR__
 				.'/../../vendor/nervo/yuicompressor/yuicompressor.jar');
+		if ($this->_jarPath === false)
+			$this->_jarPath = realpath(__DIR__
+					.'/../../../../nervo/yuicompressor/yuicompressor.jar');
 
 		// Check that all supplied options are valid
 		foreach (array_keys($options) as $option)
