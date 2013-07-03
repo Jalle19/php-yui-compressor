@@ -27,6 +27,7 @@ class Compressor
 	 */
 	private $_options = array(
 		'type'=>self::TYPE_JS,
+		'charset'=>'UTF-8',
 		'line-break'=>false,
 		'verbose'=>false,
 		'nomunge'=>false,
@@ -87,7 +88,8 @@ class Compressor
 	public function compress($data)
 	{
 		// Construct the command
-		$cmd = 'java -jar '.escapeshellarg($this->_jarPath).' --charset UTF-8';
+		$cmd = 'java -jar '.escapeshellarg($this->_jarPath);
+		$cmd .= ' --charset '.$this->_options['charset'];
 		$cmd .= ' --type '.$this->_options['type'];
 
 		if ($this->_options['line-break'] !== false)
