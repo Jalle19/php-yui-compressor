@@ -60,6 +60,9 @@ class Compressor
 		if ($this->_jarPath === false)
 			$this->_jarPath = realpath(__DIR__
 					.'/../../../../nervo/yuicompressor/yuicompressor.jar');
+		
+		if ($this->_jarPath === false)
+			throw new Exception('Failed to locate yuicompressor.jar');
 
 		// Check that all supplied options are valid
 		foreach (array_keys($options) as $option)
