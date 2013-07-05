@@ -23,9 +23,12 @@ class Compressor
 	private $_jarPath;
 
 	/**
-	 * @var array the default options for the YUI compressor
+	 * @var array the default options for the YUI compressor. In addition to 
+	 * the parameters supported by the YUI compressor it includes "javaPath" 
+	 * which is the path to the "java" binary (defaults to "java").
 	 */
 	private $_options = array(
+		'javaPath'=>'java',
 		'type'=>self::TYPE_JS,
 		'charset'=>'UTF-8',
 		'line-break'=>false,
@@ -96,7 +99,7 @@ class Compressor
 	public function compress($data)
 	{
 		// Construct the command
-		$cmd = 'java -jar '.escapeshellarg($this->_jarPath);
+		$cmd = $this->_options['javaPath'].' -jar '.escapeshellarg($this->_jarPath);
 		$cmd .= ' --charset '.$this->_options['charset'];
 		$cmd .= ' --type '.$this->_options['type'];
 
