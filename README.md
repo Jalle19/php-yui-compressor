@@ -34,7 +34,10 @@ $optimizedScript = $yui->compress($script);
 ```php
 <?php
 
+// javaPath defauls to "java" which means it has to be in the path. If that's 
+// not the case we can override it like this.
 $yui = new \YUI\Compressor(array(
+	'javaPath'=>'/usr/bin/java',
 	'line-break'=>80,
 	'disable-optimizations'=>true,
 ));
